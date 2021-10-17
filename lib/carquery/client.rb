@@ -3,7 +3,7 @@ require 'faraday'
 require 'faraday_middleware'
 
 module Carquery
-  module Client
+  class Client
     API_VERSION = '0.3'.freeze
     BASE_URL = 'https://www.carqueryapi.com'.freeze
 
@@ -22,19 +22,15 @@ module Carquery
     end
 
     def years
-      request(cmd: 'getYears')
+      request(cmd: 'getYears')['Years']
     end
 
     def makes_for_year(year, us_only = 1)
-      request(cmd: 'getMakes', year: year, sold_in_us: us_only)
+      request(cmd: 'getMakes', year: year, sold_in_us: us_only)['Makes']
     end
 
     def models_for_year_and_make(year, make, us_only = 1)
-      request(cmd: 'getModels', year: year, make: make, sold_in_us: us_only)
-    end
-
-    def trims_for_model_year(year, make, model)
-      request(cmd: 'getTrims', year: year, make: make, model: model)
+      request(cmd: 'getModels', year: year, make: make, sold_in_us: us_only)['Models']
     end
 
     private
