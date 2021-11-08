@@ -33,6 +33,10 @@ module Carquery
       request(cmd: 'getModels', year: year, make: make, sold_in_us: us_only)['Models']
     end
 
+    def trims_for_model(year, make, model)
+      request(cmd: 'getTrims', year: year, make: make, model: model)['Trims']
+    end
+
     private
 
     def request(params = {})

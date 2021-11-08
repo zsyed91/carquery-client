@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    carquery-client (0.1.0)
+    carquery-client (0.1.1)
       faraday (~> 1.8)
       faraday_middleware (~> 1.1)
 
